@@ -3,7 +3,20 @@ const toDoForm = document.querySelector(".js-toDoForm"),
     toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = "toDos";
-const toDos = [];
+let toDos = [];
+
+
+
+function deleteToDo(event){
+    const btn = event.target; //지울 버튼
+    const li = btn.parentNode; //지울 리스트 선택
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(function(toDo){
+        return toDo.id !== parseInt(li.id)
+    });
+    toDos = cleanToDos ; 
+    saveToDos();
+}
 
 function saveToDos(){
     localStorage.setItem("toDos", JSON.stringify(toDos));
@@ -16,6 +29,7 @@ function paintToDo(text){
     const newId = toDos.length + 1 ;
     span.innerText = text;
     delBut.innerText = "❌";
+    delBut.addEventListener("click",deleteToDo);//버튼 지우기 함수
     li.appendChild(span);
     li.appendChild(delBut);
     li.id = newId;
