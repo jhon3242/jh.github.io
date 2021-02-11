@@ -9,8 +9,9 @@ function getWeather(lat, lng){
         return AAAAA.json();
     }).then(function(BBBBBB){
        const temperature = BBBBBB.main.temp;
+       const temperatureFloor = Math.floor(temperature);
        const place = BBBBBB.name;
-       weather.innerText = `${temperature}C ${place}`
+       weather.innerText = `${temperatureFloor}℃ ${place}`
 
     })
 }

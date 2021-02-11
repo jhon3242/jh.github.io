@@ -28,7 +28,8 @@ function paintToDo(text){
     const span = document.createElement("span");
     const newId = toDos.length + 1 ;
     span.innerText = text;
-    delBut.innerText = "❌";
+    delBut.innerText = "x";
+    delBut.classList.add("myButton");
     delBut.addEventListener("click",deleteToDo);//버튼 지우기 함수
     li.appendChild(span);
     li.appendChild(delBut);
